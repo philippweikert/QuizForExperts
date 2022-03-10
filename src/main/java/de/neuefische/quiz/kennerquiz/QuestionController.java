@@ -21,14 +21,22 @@ public class QuestionController {
         return ResponseEntity.of(questionService.findById(id));
     }
 
-   /* @PutMapping("/{id)")
-    public Question changeQuestions(@PathVariable String id, @RequestBody String asked){
-        return questionService.changeQuestion(id, asked);
+    @PutMapping("/{id)")
+    public Question changeQuestions(@PathVariable String id, @RequestBody Question question){
+        question.setId(id);
+        return questionService.changeQuestion(question);
 
-    } */
+    }
 
     @DeleteMapping("/{id}")
     public void deleteQuestionById(@PathVariable String id) {
         questionService.deleteQuestion(id);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Question> patchQuestion (@PathVariable String id, @RequestBody Question question){
+        return ResponseEntity.of(questionService.patchQuestion(id, question));
+    }
 }
+
+

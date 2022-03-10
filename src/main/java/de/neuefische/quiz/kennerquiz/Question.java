@@ -11,4 +11,18 @@ public class Question {
     @Id
     public String id;
     public String asked;
+
+
+public Question patch(Question question) {
+    if (question.getAsked() != null) {
+    setAsked(question.getAsked());
+    }
+
+    return this;
+}
+
+public Question update (Question question){
+    setAsked(question.getAsked());
+    return this;
+}
 }

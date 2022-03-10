@@ -22,4 +22,14 @@ public class QuestionService {
     public void deleteQuestion(String id) {
         questionRepo.deleteById(id);
     }
+
+    public Question changeQuestion(Question question) {
+        return questionRepo.save(question);
+    }
+
+    public Optional<Question> patchQuestion(String id, Question question) {
+        return questionRepo.findById(id)
+                .map(question1 -> question1.patch(question))
+                .map(question1 -> questionRepo.save(question1));
+    }
 }

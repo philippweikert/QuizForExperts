@@ -21,7 +21,7 @@ public class QuestionController {
         return ResponseEntity.of(questionService.findById(id));
     }
 
-    @PutMapping("/{id)")
+    @PutMapping("/{id}")
     public Question changeQuestions(@PathVariable String id, @RequestBody Question question){
         question.setId(id);
         return questionService.changeQuestion(question);
